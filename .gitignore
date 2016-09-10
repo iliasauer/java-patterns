@@ -1,0 +1,13 @@
+###Gradle
+.gradle
+!gradle-wrapper.jar
+gradle/
+
+###Idea
+*.iws
+.idea
+java-patterns.ipr
+
+###Build
+build/
+*.jar
