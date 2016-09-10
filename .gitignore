@@ -1,13 +1,12 @@
-###Gradle
+#Gradle
 .gradle
 !gradle-wrapper.jar
 gradle/
 
-###Idea
+#Idea
 *.iws
 .idea
 java-patterns.ipr
 
-###Build
+#Build
 build/
-*.jar
