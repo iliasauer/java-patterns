@@ -1,9 +1,10 @@
 package com.company.learn.javapatterns.observer.weather.api;
 
+import com.company.learn.javapatterns.observer.weather.abstr.AbstractDataObservable;
 import com.company.learn.javapatterns.observer.weather.impl.BasicWeatherData;
-import com.company.learn.javapatterns.observer.weather.impl.BasicWeatherDataService;
-import com.company.learn.javapatterns.observer.weather.impl.CurrentConditionsDisplay;
-import com.company.learn.javapatterns.observer.weather.impl.StatisticsDisplay;
+import com.company.learn.javapatterns.observer.weather.impl.BasicWeatherDataObservable;
+import com.company.learn.javapatterns.observer.weather.impl.CurrentConditionsDisplayableObserver;
+import com.company.learn.javapatterns.observer.weather.impl.StatisticsDisplayableObserver;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,20 +15,20 @@ import java.util.function.Function;
 /**
  Created on 13.09.16.
  */
-public class WeatherDataServiceTest {
+public class NativeObservationWeatherDataTest {
 
-	private WeatherDataService weatherDataService;
+	private AbstractDataObservable<WeatherData> weatherDataService;
 	private List<
-		Function<ObservableSubject<WeatherData>, DisplayableObserver<WeatherData>>
+		Function<AbstractDataObservable<WeatherData>, DisplayableObserver<WeatherData>>
 		> observersCreators;
 	private List<WeatherData> weatherDatum;
 
 	@Before
 	public void setUp() {
-		weatherDataService = new BasicWeatherDataService();
+		weatherDataService = new BasicWeatherDataObservable();
 		observersCreators= Arrays.asList(
-			CurrentConditionsDisplay::new,
-			StatisticsDisplay::new
+			CurrentConditionsDisplayableObserver::new,
+			StatisticsDisplayableObserver::new
 		);
 		weatherDatum = Arrays.asList(
 			new BasicWeatherData(80f, 65f, 30.4f),
@@ -39,6 +40,6 @@ public class WeatherDataServiceTest {
 	@Test
 	public void shouldDisplayObserversOutput() throws Exception {
 		observersCreators.forEach(observersCreator -> observersCreator.apply(weatherDataService));
-		weatherDatum.forEach(weatherDataService::setWeatherData);
+		weatherDatum.forEach(weatherDataService::setData);
 	}
 }

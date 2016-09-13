@@ -13,7 +13,7 @@ import java.util.List;
 /**
  Created on 13.09.16.
  */
-public class DisplayableDuckTest {
+public class DuckTest {
 
 	private List<DisplayableDuck> ducks;
 

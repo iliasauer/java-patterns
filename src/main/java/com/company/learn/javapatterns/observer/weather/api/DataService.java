@@ -3,8 +3,10 @@ package com.company.learn.javapatterns.observer.weather.api;
 /**
  Created on 13.09.16.
  */
-public interface Observer<T> {
+public interface DataService<T> {
 
-	void update(final T observableSubjectData);
+	void dataChanged();
+
+	void setData(final T data);
 
 }

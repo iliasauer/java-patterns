@@ -1,23 +1,23 @@
 package com.company.learn.javapatterns.observer.weather.impl;
 
 import com.company.learn.javapatterns.observer.weather.api.DisplayableObserver;
-import com.company.learn.javapatterns.observer.weather.api.ObservableSubject;
 import com.company.learn.javapatterns.observer.weather.api.WeatherData;
 
 import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.Observable;
 import java.util.stream.Collectors;
 
 /**
  Created on 13.09.16.
  */
-public class StatisticsDisplay implements DisplayableObserver<WeatherData> {
+public class StatisticsDisplayableObserver implements DisplayableObserver<WeatherData> {
 	
 	private List<Double> temperatures;
 
-	public StatisticsDisplay(final ObservableSubject<WeatherData> weatherSubject) {
-		weatherSubject.registerObserver(this);
+	public StatisticsDisplayableObserver(final Observable observable) {
+		observable.addObserver(this);
 		this.temperatures = new ArrayList<>();
 	}
 
@@ -33,7 +33,8 @@ public class StatisticsDisplay implements DisplayableObserver<WeatherData> {
 	}
 
 	@Override
-	public void update(final WeatherData weatherData) {
+	public void update(final Observable observable, final Object arg) {
+		final WeatherData weatherData = mapToData(observable);
 		temperatures.add(weatherData.getTemperature());
 		display();
 	}
