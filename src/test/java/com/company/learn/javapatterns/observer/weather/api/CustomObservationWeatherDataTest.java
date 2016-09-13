@@ -25,7 +25,7 @@ public class CustomObservationWeatherDataTest {
 	@Before
 	public void setUp() {
 		weatherDataService = new BasicWeatherDataObservationSubject();
-		observersCreators= Arrays.asList(
+		observersCreators = Arrays.asList(
 			CurrentConditionsDisplayableObservationObject::new,
 			StatisticsDisplayableObservationObject::new
 		);

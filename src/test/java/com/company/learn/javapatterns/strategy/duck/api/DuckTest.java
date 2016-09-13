@@ -19,10 +19,8 @@ public class DuckTest {
 
 	@Before
 	public void setUp() {
-		ducks = new ArrayList<>(
-			Arrays.asList(
+		ducks = Arrays.asList(
 				new DecoyDuck(), new MallardDuck(), new RocketDuck()
-			)
 		);
 	}
 
