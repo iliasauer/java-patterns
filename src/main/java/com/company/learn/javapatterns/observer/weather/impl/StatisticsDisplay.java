@@ -7,17 +7,16 @@ import com.company.learn.javapatterns.observer.weather.api.WeatherData;
 import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  Created on 13.09.16.
  */
 public class StatisticsDisplay implements DisplayableObserver<WeatherData> {
 	
-	private final ObservableSubject<WeatherData> weatherSubject;
-	private List<Float> temperatures;
+	private List<Double> temperatures;
 
 	public StatisticsDisplay(final ObservableSubject<WeatherData> weatherSubject) {
-		this.weatherSubject = weatherSubject;
 		weatherSubject.registerObserver(this);
 		this.temperatures = new ArrayList<>();
 	}
@@ -26,8 +25,7 @@ public class StatisticsDisplay implements DisplayableObserver<WeatherData> {
 	public void display() {
 		final DoubleSummaryStatistics stats = temperatures
 			.stream()
-			.mapToDouble(Double::valueOf)
-			.summaryStatistics();
+			.collect(Collectors.summarizingDouble(Double::doubleValue));
 		System.out.println(
 			"Avg/Max/Min temperature: " + stats.getAverage() +
 				"/" + stats.getMax() + "/" + stats.getMin()

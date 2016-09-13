@@ -5,10 +5,10 @@ package com.company.learn.javapatterns.observer.weather.api;
  */
 public interface WeatherData {
 
-	float getTemperature();
+	double getTemperature();
 
-	float getHumidity();
+	double getHumidity();
 
-	float getPressure();
+	double getPressure();
 
 }

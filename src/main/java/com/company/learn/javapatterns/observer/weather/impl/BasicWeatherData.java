@@ -7,9 +7,9 @@ import com.company.learn.javapatterns.observer.weather.api.WeatherData;
  */
 public class BasicWeatherData implements WeatherData {
 
-	private float temperature;
-	private float humidity;
-	private float pressure;
+	private double temperature;
+	private double humidity;
+	private double pressure;
 
 	public BasicWeatherData() {
 	}
@@ -21,17 +21,17 @@ public class BasicWeatherData implements WeatherData {
 	}
 
 	@Override
-	public float getTemperature() {
+	public double getTemperature() {
 		return temperature;
 	}
 
 	@Override
-	public float getHumidity() {
+	public double getHumidity() {
 		return humidity;
 	}
 
 	@Override
-	public float getPressure() {
+	public double getPressure() {
 		return pressure;
 	}
 }

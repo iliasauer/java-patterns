@@ -47,17 +47,17 @@ public class BasicWeatherDataService implements WeatherDataService {
 	}
 
 	@Override
-	public float getTemperature() {
+	public double getTemperature() {
 		return weatherData.getTemperature();
 	}
 
 	@Override
-	public float getHumidity() {
+	public double getHumidity() {
 		return weatherData.getHumidity();
 	}
 
 	@Override
-	public float getPressure() {
+	public double getPressure() {
 		return weatherData.getPressure();
 	}
 }

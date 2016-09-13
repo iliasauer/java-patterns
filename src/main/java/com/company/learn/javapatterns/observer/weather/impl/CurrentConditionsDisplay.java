@@ -9,12 +9,10 @@ import com.company.learn.javapatterns.observer.weather.api.WeatherData;
  */
 public class CurrentConditionsDisplay implements DisplayableObserver<WeatherData> {
 
-	private final ObservableSubject<WeatherData> weatherSubject;
-	private float temperature;
-	private float humidity;
+	private double temperature;
+	private double humidity;
 
 	public CurrentConditionsDisplay(final ObservableSubject<WeatherData> weatherSubject) {
-		this.weatherSubject = weatherSubject;
 		weatherSubject.registerObserver(this);
 	}
 
