@@ -14,7 +14,13 @@ public interface Pizza extends Typed<Pizza.PizzaType> {
 	void box();
 
 	enum PizzaType {
-		CHEESE, PEPPERONI, CLAM, VEGGIE
+		CHEESE, PEPPERONI, CLAM, VEGGIE;
+
+		@Override
+		public String toString() {
+			final String temp = super.toString();
+			return Character.toUpperCase(temp.charAt(0)) + temp.substring(1).toLowerCase();
+		}
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.company.learn.javapatterns.factory.pizza.api;
 
-import com.company.learn.javapatterns.factory.pizza.impl.PizzaStore;
+import com.company.learn.javapatterns.factory.pizza.impl.StylizedPizzaStore;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,17 +9,19 @@ import org.junit.Test;
  */
 public class StoreTest {
 
-	private Store<Pizza, Pizza.PizzaType> store;
+	private StylizedStore<StylizedPizza, Pizza.PizzaType, StylizedPizza.PizzaStyle> store;
 
 	@Before
 	public void setUp() throws Exception {
-		store = new PizzaStore();
+		store = new StylizedPizzaStore();
 	}
 
 	@Test
 	public void shouldOrderPizza() throws Exception {
-		for (Enum<Pizza.PizzaType> each: Pizza.PizzaType.values()) {
-			store.order(each);
+		for (final Enum<Pizza.PizzaType> type: Pizza.PizzaType.values()) {
+			for (final Enum<StylizedPizza.PizzaStyle> style: StylizedPizza.PizzaStyle.values()) {
+				store.order(type, style);
+			}
 		}
 	}
 }
